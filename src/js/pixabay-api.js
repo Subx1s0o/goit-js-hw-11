@@ -2,7 +2,7 @@ const apiKey = '43901454-2f0f1ad212df2deb6dd93021b';
 
 const pixApi = data => {
   return fetch(
-    `https://pixabay.com/api/?key=${apiKey}&q=${data}&image_type=photo`
+    `https://pixabay.com/api/?key=${apiKey}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true`
   )
     .then(response => {
       if (!response.ok) {

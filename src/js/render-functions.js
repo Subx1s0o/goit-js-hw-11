@@ -1,37 +1,54 @@
+// Описаний у документації
+import iziToast from 'izitoast';
+// Додатковий імпорт стилів
+import 'izitoast/dist/css/iziToast.min.css';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const renderImages = resultData => {
   const list = document.querySelector('.list');
-  //   resultData.forEach(element => {
-  //     console.log(element);
-  //   });
-
   const result = resultData.hits;
+  const loader = document.querySelector('.loader-div');
+
+  list.innerHTML = '';
 
   let li = '';
 
-  result.forEach(element => {
-    li += `<li class="card">
-                <img src="${element.previewURL}" alt="${element.tags}" /> 
+  const lightbox = new SimpleLightbox('.card-link', {
+    inlineStyles: false,
+    captionsData: 'alt',
+    captionDelay: 250,
+    disableScroll: true,
+  });
+
+  if (result.length !== 0) {
+    loader.style.display = 'flex';
+    result.forEach(element => {
+      li += `<li class="card">
+                <a class="card-link" href="${element.largeImageURL}">
+                    <img class="card-image" src="${element.webformatURL}" alt="${element.tags}" /> 
+                </a>
                 <div class="main-content">
                     <ul class="card-list">
-                        <li>
+                        <li class="card-list-li">
                             <h3>
                                 likes
                             </h3>
                             <p>${element.likes}</p>
                         </li>
-                        <li>
+                        <li class="card-list-li">
                             <h3>
                                 views
                             </h3>
                             <p>${element.views}</p>
                         </li>
-                        <li>
+                        <li class="card-list-li">
                             <h3>
                                 comments
                             </h3>
                             <p>${element.comments}</p>
                         </li>
-                        <li>
+                        <li class="card-list-li">
                             <h3>
                                 downloads
                             </h3>
@@ -40,13 +57,21 @@ const renderImages = resultData => {
                     </ul>
                 </div>
             </li>`;
+    });
+    loader.style.display = 'none';
+    list.insertAdjacentHTML('beforeend', li);
 
-    console.log(element);
-  });
-
-  list.insertAdjacentHTML('beforeend', li);
-
-  //   console.log(result);
+    lightbox.refresh();
+  } else {
+    iziToast.show({
+      title: '❌',
+      message:
+        'Sorry, there are no images matching your search query. Please try again!',
+      messageColor: 'white',
+      backgroundColor: '#E25757',
+      position: 'topRight',
+    });
+  }
 };
 
 export default renderImages;
