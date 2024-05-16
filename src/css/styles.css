@@ -20,8 +20,17 @@ input {
   border-radius: 4px;
   padding: 8px 16px;
   outline: none;
-  border: 1px solid #808080;
+  border: 2px solid #808080;
   height: 40px;
+  transition: all ease 250ms;
+}
+
+input:hover {
+  border-color: #212121;
+}
+
+input:focus {
+  border-color: #4e75ff;
 }
 
 button[type='submit'] {
