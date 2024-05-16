@@ -72,8 +72,9 @@ button[type='submit'] {
 }
 
 .loader-div {
-  display: none;
+  display: flex;
   justify-content: center;
+  visibility: hidden;
 }
 
 .loader {

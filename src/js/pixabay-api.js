@@ -1,8 +1,13 @@
 const apiKey = '43901454-2f0f1ad212df2deb6dd93021b';
 
 const pixApi = data => {
+  const searchParams = new URLSearchParams({
+    image_type: 'photo',
+    orientation: 'horizontal',
+    safesearch: true,
+  });
   return fetch(
-    `https://pixabay.com/api/?key=${apiKey}&q=${data}&image_type=photo&orientation=horizontal&safesearch=true`
+    `https://pixabay.com/api/?key=${apiKey}&q=${data}&${searchParams}`
   )
     .then(response => {
       if (!response.ok) {
