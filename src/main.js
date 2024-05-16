@@ -15,10 +15,9 @@ form.addEventListener('submit', e => {
   pixApi(search)
     .then(data => {
       const result = data.hits;
-
+      loader.style.visibility = 'hidden';
       if (result.length !== 0) {
         renderImages(result);
-        loader.style.visibility = 'hidden';
       } else {
         iziToast.show({
           title: '❌',
