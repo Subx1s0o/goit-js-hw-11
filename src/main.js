@@ -10,13 +10,13 @@ const loader = document.querySelector('.loader-div');
 form.addEventListener('submit', e => {
   e.preventDefault();
   loader.style.visibility = 'visible';
-  const search = input.value;
+  const search = input.value.trim();
 
   pixApi(search)
     .then(data => {
       const result = data.hits;
       loader.style.visibility = 'hidden';
-      if (result.length !== 0) {
+      if (result.length !== 0 && search !== '') {
         renderImages(result);
       } else {
         iziToast.show({
