@@ -34,5 +34,12 @@ form.addEventListener('submit', e => {
     })
     .catch(error => {
       console.error('Помилка при рендері картинок', error);
+      iziToast.show({
+        title: '❌',
+        message: 'Sorry, check your internet connection!',
+        messageColor: 'white',
+        backgroundColor: '#E25757',
+        position: 'topRight',
+      });
     });
 });
