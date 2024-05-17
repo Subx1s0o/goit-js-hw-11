@@ -1,8 +1,6 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const list = document.querySelector('.list');
-
 const lightbox = new SimpleLightbox('.card-link', {
   inlineStyles: false,
   captionsData: 'alt',
@@ -10,7 +8,7 @@ const lightbox = new SimpleLightbox('.card-link', {
   disableScroll: true,
 });
 
-const renderImages = resultData => {
+const renderImages = (resultData, list) => {
   list.innerHTML = '';
   let li = '';
 
