@@ -59,6 +59,18 @@ button[type='submit'] {
   width: calc((100% - 48px) / 3);
 }
 
+@media (max-width: 900px) {
+  .card {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
 .card-list {
   display: flex;
   justify-content: space-around;
