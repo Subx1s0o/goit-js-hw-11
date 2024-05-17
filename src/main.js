@@ -40,6 +40,8 @@ form.addEventListener('submit', e => {
         messageColor: 'white',
         backgroundColor: '#E25757',
         position: 'topRight',
+        close: false,
+        timeout: 9999999999999999,
       });
     });
 });
