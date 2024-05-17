@@ -31,6 +31,7 @@ input:hover {
 
 input:focus {
   border-color: #4e75ff;
+  zoom: 1;
 }
 
 button[type='submit'] {
