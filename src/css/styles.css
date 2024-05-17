@@ -23,6 +23,7 @@ input {
   border: 2px solid #808080;
   height: 40px;
   transition: all ease 250ms;
+  font-size: 16px;
 }
 
 input:hover {
