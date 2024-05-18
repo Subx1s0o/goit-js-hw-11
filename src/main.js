@@ -16,11 +16,9 @@ form.addEventListener('submit', e => {
   pixApi(search)
     .then(data => {
       const result = data.hits;
-      loader.style.visibility = 'hidden';
+
       if (result.length !== 0 && search !== '') {
         renderImages(result, list);
-
-        input.value = '';
       } else {
         iziToast.show({
           title: '❌',
@@ -41,7 +39,11 @@ form.addEventListener('submit', e => {
         backgroundColor: '#E25757',
         position: 'topRight',
 
-        timeout: 9999999999999,
+        timeout: 5000,
       });
+    })
+    .finally(() => {
+      loader.style.visibility = 'hidden';
+      e.target.reset();
     });
 });
